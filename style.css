@@ -241,3 +241,35 @@ figcaption { margin-top: 0.5rem; color: var(--muted); font-size: 1rem; }
   a { color: inherit; text-decoration: none; }
   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #444; word-break: break-all; }
 }
+
+/* ===== Introduction with portrait ===== */
+.intro { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; margin-bottom: 3rem; }
+.intro .lead { margin-bottom: 0; }
+.intro h1 { font-size: clamp(2.8rem, 8vw, 5.5rem); }
+.portrait { margin: 0; max-width: 17rem; }
+.portrait img, .portrait .ph {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 0.3rem;
+}
+@media (min-width: 48rem) {
+  .intro { grid-template-columns: minmax(0, 1fr) 17rem; gap: 3rem; }
+}
+@media print {
+  .intro { grid-template-columns: minmax(0, 1fr) 4.5cm; gap: 1rem; margin-bottom: 1rem; }
+  .intro h1 { font-size: 26pt; }
+  .portrait img { border-radius: 0; }
+}
+
+/* ===== Menu bar: full width, so the green glow no longer shows a hard edge beside it ===== */
+.site-header {
+  width: 100%;
+  margin-inline: 0;
+  padding-inline: max(1.25rem, calc((100% - var(--wide-width)) / 2));
+  background: rgba(0, 0, 0, 0.82);
+}
+@media print {
+  .site-header { padding-inline: 0; background: none; }
+}
