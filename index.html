@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Your Name – Game programmer and artist</title>
-  <meta name="description" content="Portfolio of Your Name: games I've programmed and art I've made.">
+  <title>Your Name – Portfolio</title>
+  <meta name="description" content="Portfolio of Your Name: background, education, illustrations, IT projects and internship.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
@@ -12,90 +12,55 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="#top">Your Name</a>
+    <a class="brand" href="index.html">Your Name</a>
     <nav aria-label="Main">
-      <a href="#games">Games</a>
-      <a href="#art">Art</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="education.html">Education</a>
+      <a href="illustrations.html">Illustrations</a>
+      <a href="projects.html">IT projects</a>
+      <a href="internship.html">Internship</a>
     </nav>
   </header>
 
-  <main id="top">
+  <main>
+    <!-- EDIT: this whole page is yours to rewrite. -->
     <section class="hero">
-      <h1>I program games and draw the worlds they happen in.</h1>
-      <p class="lead">Hi, I'm Your Name, a game programmer and artist based in [your city]. Replace this with one line about the kind of games you make and what you're looking for (jobs, collaborators, a team for the next jam).</p>
-      <a class="button" href="#games">Play my games</a>
+      <h1>Hi, I'm Your Name.</h1>
+      <p class="lead">Write a short personal introduction here: who you are, where you're from, and what you do in one or two sentences.</p>
     </section>
 
-    <section id="games">
-      <h2>Games</h2>
-      <ul class="projects">
-        <li>
-          <h3>Game one</h3>
-          <p>Genre, game jam or solo project, and how long it took. Then what you personally programmed: the movement, the AI, the level tools, the shaders.</p>
-          <p class="tools">Made with: C#, Unity</p>
-          <p class="links"><a href="https://your-username.itch.io/game-one">Play it on itch.io</a> <a href="https://github.com/your-username/game-one">View code</a></p>
-        </li>
-        <li>
-          <h3>Game two</h3>
-          <p>Describe one hard technical problem you solved, such as pathfinding, collision, or a custom renderer, and how.</p>
-          <p class="tools">Made with: C++, SDL</p>
-          <p class="links"><a href="https://github.com/your-username/game-two">View code</a></p>
-        </li>
-        <li>
-          <h3>Game three</h3>
-          <p>Say what a player does in the first minute. A short GIF or trailer link goes a long way here.</p>
-          <p class="tools">Made with: GDScript, Godot</p>
-          <p class="links"><a href="https://your-username.itch.io/game-three">Play it on itch.io</a></p>
-        </li>
+    <section>
+      <h2>Educational background</h2>
+      <dl class="meta">
+        <dt>20XX – now</dt>
+        <dd>Current program, School or university</dd>
+        <dt>20XX – 20XX</dt>
+        <dd>Previous program, School</dd>
+        <dt>20XX – 20XX</dt>
+        <dd>Secondary education, School</dd>
+      </dl>
+    </section>
+
+    <section>
+      <h2>Motivations</h2>
+      <p>Explain what drives you: why you chose this field, what you enjoy about it, and where you want it to take you.</p>
+      <p>A second paragraph is fine if you want to mention a moment or project that shaped your choices.</p>
+    </section>
+
+    <section>
+      <h2>What's on this site</h2>
+      <ul class="link-list">
+        <li><a href="education.html">Education</a><p>My current studies and the skills I've learned so far.</p></li>
+        <li><a href="illustrations.html">Illustrations</a><p>Artwork, and the software I made it with.</p></li>
+        <li><a href="projects.html">IT projects</a><p>What I've built, in which language, and why.</p></li>
+        <li><a href="internship.html">Internship</a><p>What I did, and the skills I took away.</p></li>
       </ul>
-    </section>
-
-    <section id="art">
-      <h2>Art</h2>
-      <p class="section-note">Concept art, sprites, 3D models, and environments. Click through to the full-size versions.</p>
-      <div class="gallery">
-        <!-- To use a real image: put the file in an "images" folder, then replace the
-             <div class="ph"> line with:
-             <img src="images/your-file.jpg" alt="Describe the artwork" loading="lazy"> -->
-        <figure>
-          <div class="ph" role="img" aria-label="Placeholder for artwork"></div>
-          <figcaption>Character concept, digital paint</figcaption>
-        </figure>
-        <figure>
-          <div class="ph" role="img" aria-label="Placeholder for artwork"></div>
-          <figcaption>Tileset for Game one, pixel art</figcaption>
-        </figure>
-        <figure>
-          <div class="ph" role="img" aria-label="Placeholder for artwork"></div>
-          <figcaption>Forest environment, 3D</figcaption>
-        </figure>
-        <figure>
-          <div class="ph" role="img" aria-label="Placeholder for artwork"></div>
-          <figcaption>Enemy sprite sheet</figcaption>
-        </figure>
-        <figure>
-          <div class="ph" role="img" aria-label="Placeholder for artwork"></div>
-          <figcaption>Title screen illustration</figcaption>
-        </figure>
-        <figure>
-          <div class="ph" role="img" aria-label="Placeholder for artwork"></div>
-          <figcaption>UI mockup</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section id="about">
-      <h2>About</h2>
-      <p>Write a short paragraph about how you got into games, what you're studying or working on, and which part you enjoy most, the code or the art. Mention the tools you use every day.</p>
-      <p><a href="cv.pdf">Download my CV (PDF)</a></p>
     </section>
 
     <section id="contact">
       <h2>Contact</h2>
-      <p>The best way to reach me is by email: <a href="mailto:you@example.com">you@example.com</a>.</p>
-      <p>You can also find me on <a href="https://github.com/your-username">GitHub</a>, <a href="https://your-username.itch.io">itch.io</a>, and <a href="https://www.artstation.com/your-username">ArtStation</a>.</p>
+      <p>Email: <a href="mailto:you@example.com">you@example.com</a>. Also on <a href="https://github.com/your-username">GitHub</a> and <a href="https://www.linkedin.com/in/your-username">LinkedIn</a>.</p>
+      <p><a href="cv.pdf">Download my CV (PDF)</a></p>
     </section>
   </main>
 
