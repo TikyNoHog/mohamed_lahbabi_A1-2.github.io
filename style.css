@@ -1,0 +1,243 @@
+/* Change the colors here and the whole site follows. */
+:root {
+  color-scheme: dark;
+  --bg: #000;
+  --text: #eef4f0;
+  --muted: #8d9d95;
+  --line: #1a2a23;
+  --emerald: #10b981;
+  --emerald-light: #6ee7b7;
+  --emerald-deep: #047857;
+  --red: #ff2d4b;
+  --text-width: 42rem;
+  --wide-width: 62rem;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+
+/* Emerald glow behind everything, fixed while you scroll */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60rem 38rem at 85% -8%, rgba(16, 185, 129, 0.34), transparent 65%),
+    radial-gradient(45rem 32rem at -10% 55%, rgba(4, 120, 87, 0.28), transparent 65%),
+    radial-gradient(30rem 20rem at 100% 100%, rgba(255, 45, 75, 0.10), transparent 70%);
+}
+
+::selection { background: var(--red); color: #fff; }
+
+h1, h2, h3, h4, dt, .brand, nav a, .tag {
+  font-family: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+}
+
+a { color: var(--red); text-underline-offset: 0.2em; }
+a:hover { color: var(--emerald-light); }
+a:focus-visible { outline: 3px solid var(--emerald-light); outline-offset: 3px; }
+
+.site-header,
+main,
+.site-footer {
+  width: min(100% - 2.5rem, var(--wide-width));
+  margin-inline: auto;
+}
+
+/* The menu stays visible while you scroll */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  padding: 1rem 0;
+  background: rgba(0, 0, 0, 0.72);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand { font-weight: 700; font-size: 1.15rem; color: var(--text); text-decoration: none; }
+.brand:hover { color: var(--emerald-light); }
+
+nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  padding-bottom: 0.1rem;
+  border-bottom: 2px solid transparent;
+}
+nav a:hover { color: var(--text); border-bottom-color: var(--red); }
+
+section { padding: 3rem 0; border-top: 1px solid var(--line); scroll-margin-top: 4.5rem; }
+.hero { padding: 5rem 0 3.5rem; border-top: 0; }
+
+h1 {
+  font-size: clamp(3rem, 12vw, 7.5rem);
+  line-height: 0.98;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  margin: 0 0 1.5rem;
+  color: var(--emerald-light);
+  background: linear-gradient(100deg, #f0fff8 0%, #6ee7b7 40%, #10b981 75%, #047857 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lead { font-size: 1.35rem; color: var(--muted); max-width: 36rem; margin: 0 0 3rem; }
+
+h2 { font-size: clamp(1.9rem, 5vw, 3rem); line-height: 1.1; margin: 0 0 1.25rem; letter-spacing: -0.03em; }
+.hero h2 { font-size: 1.5rem; letter-spacing: -0.01em; }
+section > * + h2 { margin-top: 2.25rem; }
+h3 { font-size: 1.3rem; margin: 2.25rem 0 0.75rem; }
+h2 + h3, .entry > h3:first-child { margin-top: 0; }
+.entry > h3:first-child { font-size: 1.6rem; letter-spacing: -0.02em; }
+h4 { font-size: 1.05rem; margin: 1.25rem 0 0.4rem; color: var(--emerald-light); }
+.two-col h4 { margin-top: 0; }
+
+p { margin: 0 0 1rem; }
+
+/* Keep reading text narrow; the gallery gets the full width. */
+section > p, section > ul, section > dl, section > article, section > .two-col,
+.site-footer p { max-width: var(--text-width); }
+
+/* Scrolling title band, full width of the screen */
+.marquee {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+  white-space: nowrap;
+  border-block: 1px solid var(--line);
+  padding: 1rem 0;
+}
+.marquee-track { display: inline-flex; animation: slide 32s linear infinite; }
+.marquee-track span {
+  margin-right: 3rem;
+  font-family: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(2.5rem, 9vw, 6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--red);
+}
+@keyframes slide { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+/* Label / value pairs: dates, languages, circumstances */
+.meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.4rem 1.5rem;
+  margin: 0 0 1.25rem;
+}
+.meta dt { font-weight: 700; color: var(--muted); }
+.meta dd { margin: 0; }
+
+@media (max-width: 30rem) {
+  .meta { grid-template-columns: 1fr; gap: 0; }
+  .meta dd { margin-bottom: 0.6rem; }
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.05rem 0.85rem;
+  border: 1px solid var(--emerald);
+  border-radius: 999px;
+  color: var(--emerald-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.plain { margin: 0 0 1rem; padding-left: 1.2rem; }
+.plain li { margin-bottom: 0.4rem; }
+.plain li::marker { color: var(--emerald); }
+
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.5rem 2rem;
+}
+
+.entry { padding: 0 0 2.25rem; margin-bottom: 2.25rem; border-bottom: 1px solid var(--line); }
+.entry:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+
+.links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; }
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1.5rem 1.25rem;
+  margin-top: 1.25rem;
+}
+.gallery figure { margin: 0; }
+.gallery img, .ph {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 0.3rem;
+}
+.ph {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.28), rgba(255, 45, 75, 0.12)), #0a120e;
+  border: 1px solid var(--line);
+}
+figcaption { margin-top: 0.5rem; color: var(--muted); font-size: 1rem; }
+
+.site-footer { padding: 2rem 0 3rem; color: var(--muted); font-size: 0.95rem; }
+
+/* ===== Printing: black on white, no menu, no awkward breaks ===== */
+@page { size: A4; margin: 15mm; }
+
+@media print {
+  :root { --bg: #fff; --text: #000; --muted: #444; --line: #bbb; --red: #000; --emerald: #555; --emerald-light: #000; }
+
+  html { scroll-behavior: auto; }
+  body { font-size: 11pt; line-height: 1.45; background: #fff; overflow: visible; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body::before, .marquee { display: none; }
+
+  .site-header, main, .site-footer { width: 100%; }
+  .site-header { position: static; padding: 0 0 0.5rem; background: none; backdrop-filter: none; border-bottom: 1px solid #000; }
+  nav, .no-print { display: none; }
+
+  .hero { padding: 1.25rem 0 1rem; }
+  h1 { font-size: 26pt; margin-bottom: 0.5rem; background: none; -webkit-text-fill-color: #000; color: #000; }
+  .lead { font-size: 12pt; margin-bottom: 1rem; }
+  h2 { font-size: 16pt; letter-spacing: 0; }
+  .entry > h3:first-child { font-size: 13pt; }
+  section { padding: 1rem 0; scroll-margin-top: 0; }
+
+  section > p, section > ul, section > dl, section > article, section > .two-col { max-width: none; }
+
+  /* Don't strand a heading at the bottom of a page, or split a block in two */
+  h1, h2, h3, h4 { break-after: avoid; }
+  .entry, figure, .two-col > div, .meta { break-inside: avoid; }
+
+  .gallery { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+  .ph { background: none; border: 1px solid #bbb; }
+  .tag { border-color: #777; color: #000; }
+
+  /* Links print as plain text, with web addresses spelled out */
+  a { color: inherit; text-decoration: none; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #444; word-break: break-all; }
+}
